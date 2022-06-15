@@ -28,8 +28,6 @@ ul {
   font-size: 30px;
 }
 button {
-  width: 40px;
-  height: 40px;
   font-size: 25px;
 }
 #lower {
@@ -45,7 +43,7 @@ button {
 #spacesContainer {
   display: flex;
   align-items: center;
-  align-content: center;
+  justify-content: flex-end;
 }
 .correct {
   background-color: #a5f0a7;
@@ -57,5 +55,15 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 10px;
+  margin-right: 5px;
+}
+.letter {
+  width: 40px;
+  height: 40px;
+}
+.space {
+  margin-top: 80px;
+}
+#reload {
+  margin: 10px;
 }
