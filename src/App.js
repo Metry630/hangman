@@ -97,10 +97,16 @@ function App() {
   }
   
   function handleClick(letter){
+
   }
-
   function Spaces(){
-
+    return(
+      <ul id = "spaces">
+        {
+          
+        }
+      </ul>
+    )
   }
 
   return(
@@ -111,34 +117,34 @@ function App() {
     </div>
     <div id = "lower">
       <div id = "buttons1">
-        <button onClick = {handleClick(this.textcontent)}>A</button>
-        <button onClick = {handleClick(this.textcontent)}>B</button>
-        <button onClick = {handleClick(this.textcontent)}>C</button>
-        <button onClick = {handleClick(this.textcontent)}>D</button>
-        <button onClick = {handleClick(this.textcontent)}>E</button>
-        <button onClick = {handleClick(this.textcontent)}>F</button>
-        <button onClick = {handleClick(this.textcontent)}>G</button>
-        <button onClick = {handleClick(this.textcontent)}>H</button>
-        <button onClick = {handleClick(this.textcontent)}>I</button>
-        <button onClick = {handleClick(this.textcontent)}>J</button>
-        <button onClick = {handleClick(this.textcontent)}>K</button>
-        <button onClick = {handleClick(this.textcontent)}>L</button>
-        <button onClick = {handleClick(this.textcontent)}>M</button>
+        <button onClick = {handleClick('A')}>A</button>
+        <button onClick = {handleClick('B')}>B</button>
+        <button onClick = {handleClick('C')}>C</button>
+        <button onClick = {handleClick('D')}>D</button>
+        <button onClick = {handleClick('E')}>E</button>
+        <button onClick = {handleClick('F')}>F</button>
+        <button onClick = {handleClick('G')}>G</button>
+        <button onClick = {handleClick('H')}>H</button>
+        <button onClick = {handleClick('I')}>I</button>
+        <button onClick = {handleClick('J')}>J</button>
+        <button onClick = {handleClick('K')}>K</button>
+        <button onClick = {handleClick('L')}>L</button>
+        <button onClick = {handleClick('M')}>M</button>
       </div>
       <div id = "buttons2">
-        <button onClick = {handleClick(this.textcontent)}>N</button>
-        <button onClick = {handleClick(this.textcontent)}>O</button>
-        <button onClick = {handleClick(this.textcontent)}>P</button>
-        <button onClick = {handleClick(this.textcontent)}>Q</button>
-        <button onClick = {handleClick(this.textcontent)}>R</button>
-        <button onClick = {handleClick(this.textcontent)}>S</button>
-        <button onClick = {handleClick(this.textcontent)}>T</button>
-        <button onClick = {handleClick(this.textcontent)}>U</button>
-        <button onClick = {handleClick(this.textcontent)}>V</button>
-        <button onClick = {handleClick(this.textcontent)}>W</button>
-        <button onClick = {handleClick(this.textcontent)}>X</button>
-        <button onClick = {handleClick(this.textcontent)}>Y</button>
-        <button onClick = {handleClick(this.textcontent)}>Z</button>
+        <button onClick = {handleClick('N')}>N</button>
+        <button onClick = {handleClick('O')}>O</button>
+        <button onClick = {handleClick('P')}>P</button>
+        <button onClick = {handleClick('Q')}>Q</button>
+        <button onClick = {handleClick('R')}>R</button>
+        <button onClick = {handleClick('S')}>S</button>
+        <button onClick = {handleClick('T')}>T</button>
+        <button onClick = {handleClick('U')}>U</button>
+        <button onClick = {handleClick('V')}>V</button>
+        <button onClick = {handleClick('W')}>W</button>
+        <button onClick = {handleClick('X')}>X</button>
+        <button onClick = {handleClick('Y')}>Y</button>
+        <button onClick = {handleClick('Z')}>Z</button>
       </div>
     </div>
     </>
