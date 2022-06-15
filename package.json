@@ -2,7 +2,7 @@
   "name": "hangman",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://metry630.github.io/metry630/hangman/",
+  "homepage": "https://metry630.github.io/hangman/",
   "dependencies": {
     "-": "^0.0.1",
     "@testing-library/jest-dom": "^5.16.4",
