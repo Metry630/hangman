@@ -20,49 +20,49 @@ function App() {
     if(numMistakes === 0){
       return(
         <div>
-          <img src='hangman1'></img>
+          <img src={hangman1}></img>
           <h3>Mistakes left: 6</h3>
         </div>
       )
     }else if(numMistakes === 1){
       return(
         <div>
-          <img src='hangman2'></img>
+          <img src={hangman2}></img>
           <h3>Mistakes left: 5</h3>
         </div>
       )
     }else if(numMistakes === 2){
       return(
         <div>
-          <img src='hangman3'></img>
+          <img src={hangman3}></img>
           <h3>Mistakes left: 4</h3>
         </div>
       )
     }else if(numMistakes === 3){
       return(
         <div>
-          <img src='hangman4'></img>
+          <img src={hangman4}></img>
           <h3>Mistakes left: 3</h3>
         </div>
       )
     }else if(numMistakes === 4){
       return(
         <div>
-          <img src='hangman5'></img>
+          <img src={hangman5}></img>
           <h3>Mistakes left: 2</h3>
         </div>
       )
     }else if(numMistakes === 5){
       return(
         <div>
-          <img src='hangman6'></img>
+          <img src={hangman6}></img>
           <h3>Mistakes left: 1</h3>
         </div>
       )
     }else if(numMistakes === 6){
       return(
         <div>
-          <img src='hangman7'></img>
+          <img src={hangman7}></img>
           <h3>You Lose!</h3>
         </div>
       )
@@ -79,6 +79,8 @@ function App() {
   */
 
   return(
-    
+    <>
+    <Mistakes />
+    </>
   )
 }
