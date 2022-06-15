@@ -17,6 +17,7 @@ let arrNinePartOne = nineStringPartOne.split(" ");
 let arrNinePartTwo = nineStringPartTwo.split(" ");
 let arrTen = tenString.split(" ");
 let wordBase = arrSix.concat(arrSeven, arrEight, arrNinePartOne, arrNinePartTwo, arrTen)
+// I guess getRandomWord is a better naming haha
 export default function RandomWord(){
     let randomIndex = Math.floor(Math.random()*(wordBase.length -1))
     return wordBase[randomIndex]

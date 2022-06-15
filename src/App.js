@@ -1,3 +1,26 @@
+/*
+General comments:
+- Bisa pake prettier (https://prettier.io/), biar rapi kodingannya dibaca enak
+
+- Generally titik koma di akhir kalimat sangat disarankan (atau diharuskan)
+
+- Biasa disarankan tidak pake normal css selector, melainkan pake styled components (https://styled-components.com/), jadi bisa bikin kek
+const StyledBody = styled.body`
+  font-size: 12px;
+  font-weight: bold;
+`;
+gitu2
+
+
+TODO:
+-) baca code reviewnya and improve haha
+-) pake prettier buat autoformat sama styled components buat pengganti css selector
+-) pisahin componentnya di file file lain terus diimport biar rapih
+-) kalo kau coba main gamenya, tiap kali mencet salah bakal ada flashing componentnya sesaat, try to make it not happening (at least kalo gambarnya perlu miliseconds buat di load, komponen lainnya ga ganti posisi)
+-) NewGame nya ga involve refresh browser, mungkin bisa gamenya ditaruh di component lain, terus dikasih key, terus pas click new game keynya diganti, komponen bakal auto kerefresh kalo keynya diganti (reference: https://medium.com/@albertogasparin/forcing-state-reset-on-a-react-component-by-using-the-key-prop-14b36cd7448e)
+-) Coba bikin halaman yang beda buat menu page nya, jadi player bisa milih panjang katanya mau berapa panjang terus kau filter katanya based on panjang katanya (atau pilih berapa lives nya juga oke, up to u). Buat belajar routing, bisa liat: https://v5.reactrouter.com/web/guides/quick-start
+*/
+
 import { useState } from 'react'
 import React from 'react'
 import './App.css';
@@ -49,12 +72,21 @@ let splitCurrentWord = currentWord.split('')
 function App() {
   const [revealedLetters, setRevealedLetters] = useState([]);
   const [numMistakes, setNumMistakes] = useState(0);
+  // function namingnya pake camelCase dong haha
+  // naming bisa diimprove, misalkan kek MistakeCountDisplay gitu, Mistakes doang lumayan confusing I think
+  // Components biasa tidak disarankan ditumpuk di dalam app function gini, bisa di luar App function at least, atau better ditaruh di file lain, terus tinggal diimport
   function Mistakes(){
+    // if (splitCurrentWord).every(element => revealedLetters.includes(element)) {
+    //   ....
+    // }
+    // Dia ga perlu dikasih return di arrow functionnya
     if(splitCurrentWord.every(element => {
       return revealedLetters.includes(element);
     })){
       return <Win />
     }
+    // Kenapa perlu di hardcode satu satu ya hahaha
+    // img srcnya bisa pake object {1: hangman1, 2: hangman2} etc, keynya itu no of mistakes gitu2
     if(numMistakes === 0){
       return(
         <div id = "mistakes">
@@ -130,7 +162,11 @@ function App() {
   function Spaces(){
     let i = 0;
     let arr = splitCurrentWord.map(function(letter){
+      // gimana kalo
+      // const letterDisplay = revealedLetters.includes(letter) ? letter : '_';
+      // return <li....>{letterDisplay}</li>
       if(revealedLetters.includes(letter)){
+        // Tolong keynya jangan pake i++ hahaha
         return <li className='space' key = {i++}>{letter}</li>
       }else{
         return <li className='space' key = {i++}>_</li>
@@ -138,11 +174,16 @@ function App() {
     })
     return(
       <ul id = "spaces">
+        {/* .map nya bisa disini instead of pake arr */}
         {arr}
       </ul>
     )
   }
   
+  // Biasa kalo function handler gini orang prefer nulisnya
+  // const handleClick = (letter) => {
+  //
+  // }
   function handleClick(letter){
     if(revealedLetters.includes(letter) === false){
       setRevealedLetters([...revealedLetters, letter])
@@ -151,6 +192,8 @@ function App() {
       }
     }
   }
+
+  // namingnya I guess bisa diimprove
   function Win(){
     return(
       <div id = "mistakes">
@@ -175,6 +218,8 @@ function App() {
     </div>
     <div id = "lower">
       <div id = "buttons1">
+        {/* Instead of ditulis satu satu, gimana kalo */}
+        {/* ['A', 'B', 'C', .... 'M'].map(letter => <button onClick={() => handleClick(letter)} ...>{letter}</button>) */}
         <button onClick = {() => handleClick('A')} 
         className = {!revealedLetters.includes("A") ? "regular letter" : revealedLetters.includes("A") && splitCurrentWord.includes("A") ? "correct letter" : "incorrect letter"}>A</button>
         <button onClick = {() => handleClick('B')}
