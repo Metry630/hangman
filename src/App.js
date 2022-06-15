@@ -90,29 +90,35 @@ function App() {
       return(
         <div id = "mistakes">
           <img src={hangman7}></img>
-          <h3>You Lose!</h3>
+          <h3>You Lose! The word was {currentWord}</h3>
         </div>
       )
     }
   }
-  
-  function handleClick(letter){
-
-  }
-  function Spaces(splitCurrentWord){
+console.log(currentWord)
+  function Spaces(){
+    let i = 0;
+    let arr = splitCurrentWord.map(function(letter){
+      if(revealedLetters.includes(letter)){
+        return <li className='space' key = {i++}>{letter}</li>
+      }else{
+        return <li className='space' key = {i++}>_</li>
+      }
+    })
     return(
       <ul id = "spaces">
-        {splitCurrentWord.map(function(letter){
-          if(revealedLetters.includes(letter)){
-            return <li className='space'>{letter}</li>
-          }else{
-            return <li className='space'></li>
-          }
-        }
-        )}
+        {arr}
       </ul>
     )
   }
+  
+  function handleClick(letter){
+    setRevealedLetters([...revealedLetters, letter])
+    if(splitCurrentWord.includes(letter) === false){
+      setNumMistakes(n => n+1)
+    }
+  }
+
 
   return(
     <>
@@ -122,34 +128,34 @@ function App() {
     </div>
     <div id = "lower">
       <div id = "buttons1">
-        <button onClick = {handleClick('A')}>A</button>
-        <button onClick = {handleClick('B')}>B</button>
-        <button onClick = {handleClick('C')}>C</button>
-        <button onClick = {handleClick('D')}>D</button>
-        <button onClick = {handleClick('E')}>E</button>
-        <button onClick = {handleClick('F')}>F</button>
-        <button onClick = {handleClick('G')}>G</button>
-        <button onClick = {handleClick('H')}>H</button>
-        <button onClick = {handleClick('I')}>I</button>
-        <button onClick = {handleClick('J')}>J</button>
-        <button onClick = {handleClick('K')}>K</button>
-        <button onClick = {handleClick('L')}>L</button>
-        <button onClick = {handleClick('M')}>M</button>
+        <button onClick = {() => handleClick('A')}>A</button>
+        <button onClick = {() => handleClick('B')}>B</button>
+        <button onClick = {() => handleClick('C')}>C</button>
+        <button onClick = {() => handleClick('D')}>D</button>
+        <button onClick = {() => handleClick('E')}>E</button>
+        <button onClick = {() => handleClick('F')}>F</button>
+        <button onClick = {() => handleClick('G')}>G</button>
+        <button onClick = {() => handleClick('H')}>H</button>
+        <button onClick = {() => handleClick('I')}>I</button>
+        <button onClick = {() => handleClick('J')}>J</button>
+        <button onClick = {() => handleClick('K')}>K</button>
+        <button onClick = {() => handleClick('L')}>L</button>
+        <button onClick = {() => handleClick('M')}>M</button>
       </div>
       <div id = "buttons2">
-        <button onClick = {handleClick('N')}>N</button>
-        <button onClick = {handleClick('O')}>O</button>
-        <button onClick = {handleClick('P')}>P</button>
-        <button onClick = {handleClick('Q')}>Q</button>
-        <button onClick = {handleClick('R')}>R</button>
-        <button onClick = {handleClick('S')}>S</button>
-        <button onClick = {handleClick('T')}>T</button>
-        <button onClick = {handleClick('U')}>U</button>
-        <button onClick = {handleClick('V')}>V</button>
-        <button onClick = {handleClick('W')}>W</button>
-        <button onClick = {handleClick('X')}>X</button>
-        <button onClick = {handleClick('Y')}>Y</button>
-        <button onClick = {handleClick('Z')}>Z</button>
+        <button onClick = {() => handleClick('N')}>N</button>
+        <button onClick = {() => handleClick('O')}>O</button>
+        <button onClick = {() => handleClick('P')}>P</button>
+        <button onClick = {() => handleClick('Q')}>Q</button>
+        <button onClick = {() => handleClick('R')}>R</button>
+        <button onClick = {() => handleClick('S')}>S</button>
+        <button onClick = {() => handleClick('T')}>T</button>
+        <button onClick = {() => handleClick('U')}>U</button>
+        <button onClick = {() => handleClick('V')}>V</button>
+        <button onClick = {() => handleClick('W')}>W</button>
+        <button onClick = {() => handleClick('X')}>X</button>
+        <button onClick = {() => handleClick('Y')}>Y</button>
+        <button onClick = {() => handleClick('Z')}>Z</button>
       </div>
     </div>
     </>
