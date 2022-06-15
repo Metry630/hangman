@@ -8,6 +8,7 @@ import hangman4 from './img/hangman4.jpeg'
 import hangman5 from './img/hangman5.jpeg'
 import hangman6 from './img/hangman6.jpeg'
 import hangman7 from './img/hangman7.jpeg'
+import { isDisabled } from '@testing-library/user-event/dist/utils';
 export default App
 const letters = [
   {letter: 'A', id: 1}, 
@@ -113,12 +114,13 @@ console.log(currentWord)
   }
   
   function handleClick(letter){
-    setRevealedLetters([...revealedLetters, letter])
-    if(splitCurrentWord.includes(letter) === false){
+    if(revealedLetters.includes(letter) === false){
+      setRevealedLetters([...revealedLetters, letter])
+      if(splitCurrentWord.includes(letter) === false){
       setNumMistakes(n => n+1)
+      }
     }
   }
-
 
   return(
     <>
