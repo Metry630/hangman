@@ -99,12 +99,17 @@ function App() {
   function handleClick(letter){
 
   }
-  function Spaces(){
+  function Spaces(splitCurrentWord){
     return(
       <ul id = "spaces">
-        {
-          
+        {splitCurrentWord.map(function(letter){
+          if(revealedLetters.includes(letter)){
+            return <li className='space'>{letter}</li>
+          }else{
+            return <li className='space'></li>
+          }
         }
+        )}
       </ul>
     )
   }
