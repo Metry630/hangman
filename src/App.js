@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import React from 'react'
 import './App.css';
 import RandomWord from './words.js'
 import hangman1 from './img/hangman1.jpeg'
@@ -41,6 +42,7 @@ const letters = [
   {letter: 'Y', id: 25}, 
   {letter: 'Z', id: 26}
 ];
+
 let currentWord = RandomWord();
 let splitCurrentWord = currentWord.split('')
 
