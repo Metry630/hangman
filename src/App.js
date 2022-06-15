@@ -8,7 +8,6 @@ import hangman4 from './img/hangman4.jpeg'
 import hangman5 from './img/hangman5.jpeg'
 import hangman6 from './img/hangman6.jpeg'
 import hangman7 from './img/hangman7.jpeg'
-import { isDisabled } from '@testing-library/user-event/dist/utils';
 export default App
 const letters = [
   {letter: 'A', id: 1}, 
@@ -117,49 +116,77 @@ console.log(currentWord)
     if(revealedLetters.includes(letter) === false){
       setRevealedLetters([...revealedLetters, letter])
       if(splitCurrentWord.includes(letter) === false){
-      setNumMistakes(n => n+1)
+      setNumMistakes(n => n+1);
       }
     }
   }
-
+  console.log(revealedLetters)
   return(
-    <>
+    <div id ="hangman">
     <div id="upper">
+      <div id = "spacesContainer">
       <Spaces />
+      </div>
       <Mistakes />
     </div>
     <div id = "lower">
       <div id = "buttons1">
-        <button onClick = {() => handleClick('A')}>A</button>
-        <button onClick = {() => handleClick('B')}>B</button>
-        <button onClick = {() => handleClick('C')}>C</button>
-        <button onClick = {() => handleClick('D')}>D</button>
-        <button onClick = {() => handleClick('E')}>E</button>
-        <button onClick = {() => handleClick('F')}>F</button>
-        <button onClick = {() => handleClick('G')}>G</button>
-        <button onClick = {() => handleClick('H')}>H</button>
-        <button onClick = {() => handleClick('I')}>I</button>
-        <button onClick = {() => handleClick('J')}>J</button>
-        <button onClick = {() => handleClick('K')}>K</button>
-        <button onClick = {() => handleClick('L')}>L</button>
-        <button onClick = {() => handleClick('M')}>M</button>
+        <button onClick = {() => handleClick('A')} 
+        className = {!revealedLetters.includes("A") ? "regular" : revealedLetters.includes("A") && splitCurrentWord.includes("A") ? "correct" : "incorrect"}>A</button>
+        <button onClick = {() => handleClick('B')}
+        className = {!revealedLetters.includes("B") ? "regular" : revealedLetters.includes("B") && splitCurrentWord.includes("B") ? "correct" : "incorrect"}>B</button>
+        <button onClick = {() => handleClick('C')}
+        className = {!revealedLetters.includes("C") ? "regular" : revealedLetters.includes("C") && splitCurrentWord.includes("C") ? "correct" : "incorrect"}>C</button>
+        <button onClick = {() => handleClick('D')}
+        className = {!revealedLetters.includes("D") ? "regular" : revealedLetters.includes("D") && splitCurrentWord.includes("D") ? "correct" : "incorrect"}>D</button>
+        <button onClick = {() => handleClick('E')}
+        className = {!revealedLetters.includes("E") ? "regular" : revealedLetters.includes("E") && splitCurrentWord.includes("E") ? "correct" : "incorrect"}>E</button>
+        <button onClick = {() => handleClick('F')}
+        className = {!revealedLetters.includes("F") ? "regular" : revealedLetters.includes("F") && splitCurrentWord.includes("F") ? "correct" : "incorrect"}>F</button>
+        <button onClick = {() => handleClick('G')}
+        className = {!revealedLetters.includes("G") ? "regular" : revealedLetters.includes("G") && splitCurrentWord.includes("G") ? "correct" : "incorrect"}>G</button>
+        <button onClick = {() => handleClick('H')}
+        className = {!revealedLetters.includes("H") ? "regular" : revealedLetters.includes("H") && splitCurrentWord.includes("H") ? "correct" : "incorrect"}>H</button>
+        <button onClick = {() => handleClick('I')}
+        className = {!revealedLetters.includes("I") ? "regular" : revealedLetters.includes("I") && splitCurrentWord.includes("I") ? "correct" : "incorrect"}>I</button>
+        <button onClick = {() => handleClick('J')}
+        className = {!revealedLetters.includes("J") ? "regular" : revealedLetters.includes("J") && splitCurrentWord.includes("J") ? "correct" : "incorrect"}>J</button>
+        <button onClick = {() => handleClick('K')}
+        className = {!revealedLetters.includes("K") ? "regular" : revealedLetters.includes("K") && splitCurrentWord.includes("K") ? "correct" : "incorrect"}>K</button>
+        <button onClick = {() => handleClick('L')}
+        className = {!revealedLetters.includes("L") ? "regular" : revealedLetters.includes("L") && splitCurrentWord.includes("L") ? "correct" : "incorrect"}>L</button>
+        <button onClick = {() => handleClick('M')}
+        className = {!revealedLetters.includes("M") ? "regular" : revealedLetters.includes("M") && splitCurrentWord.includes("M") ? "correct" : "incorrect"}>M</button>
       </div>
       <div id = "buttons2">
-        <button onClick = {() => handleClick('N')}>N</button>
-        <button onClick = {() => handleClick('O')}>O</button>
-        <button onClick = {() => handleClick('P')}>P</button>
-        <button onClick = {() => handleClick('Q')}>Q</button>
-        <button onClick = {() => handleClick('R')}>R</button>
-        <button onClick = {() => handleClick('S')}>S</button>
-        <button onClick = {() => handleClick('T')}>T</button>
-        <button onClick = {() => handleClick('U')}>U</button>
-        <button onClick = {() => handleClick('V')}>V</button>
-        <button onClick = {() => handleClick('W')}>W</button>
-        <button onClick = {() => handleClick('X')}>X</button>
-        <button onClick = {() => handleClick('Y')}>Y</button>
-        <button onClick = {() => handleClick('Z')}>Z</button>
+        <button onClick = {() => handleClick('N')}
+        className = {!revealedLetters.includes("N") ? "regular" : revealedLetters.includes("N") && splitCurrentWord.includes("N") ? "correct" : "incorrect"}>N</button>
+        <button onClick = {() => handleClick('O')}
+        className = {!revealedLetters.includes("O") ? "regular" : revealedLetters.includes("O") && splitCurrentWord.includes("O") ? "correct" : "incorrect"}>O</button>
+        <button onClick = {() => handleClick('P')}
+        className = {!revealedLetters.includes("P") ? "regular" : revealedLetters.includes("P") && splitCurrentWord.includes("P") ? "correct" : "incorrect"}>P</button>
+        <button onClick = {() => handleClick('Q')}
+        className = {!revealedLetters.includes("Q") ? "regular" : revealedLetters.includes("Q") && splitCurrentWord.includes("Q") ? "correct" : "incorrect"}>Q</button>
+        <button onClick = {() => handleClick('R')}
+        className = {!revealedLetters.includes("R") ? "regular" : revealedLetters.includes("R") && splitCurrentWord.includes("R") ? "correct" : "incorrect"}>R</button>
+        <button onClick = {() => handleClick('S')}
+        className = {!revealedLetters.includes("S") ? "regular" : revealedLetters.includes("S") && splitCurrentWord.includes("S") ? "correct" : "incorrect"}>S</button>
+        <button onClick = {() => handleClick('T')}
+        className = {!revealedLetters.includes("T") ? "regular" : revealedLetters.includes("T") && splitCurrentWord.includes("T") ? "correct" : "incorrect"}>T</button>
+        <button onClick = {() => handleClick('U')}
+        className = {!revealedLetters.includes("U") ? "regular" : revealedLetters.includes("U") && splitCurrentWord.includes("U") ? "correct" : "incorrect"}>U</button>
+        <button onClick = {() => handleClick('V')}
+        className = {!revealedLetters.includes("V") ? "regular" : revealedLetters.includes("V") && splitCurrentWord.includes("V") ? "correct" : "incorrect"}>V</button>
+        <button onClick = {() => handleClick('W')}
+        className = {!revealedLetters.includes("W") ? "regular" : revealedLetters.includes("W") && splitCurrentWord.includes("W") ? "correct" : "incorrect"}>W</button>
+        <button onClick = {() => handleClick('X')}
+        className = {!revealedLetters.includes("X") ? "regular" : revealedLetters.includes("X") && splitCurrentWord.includes("X") ? "correct" : "incorrect"}>X</button>
+        <button onClick = {() => handleClick('Y')}
+        className = {!revealedLetters.includes("Y") ? "regular" : revealedLetters.includes("Y") && splitCurrentWord.includes("Y") ? "correct" : "incorrect"}>Y</button>
+        <button onClick = {() => handleClick('Z')}
+        className = {!revealedLetters.includes("Z") ? "regular" : revealedLetters.includes("Z") && splitCurrentWord.includes("Z") ? "correct" : "incorrect"}>Z</button>
       </div>
     </div>
-    </>
+    </div>
   )
 }
