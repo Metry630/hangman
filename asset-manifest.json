@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7b14d381.css",
+    "main.js": "/static/js/main.9ea701ef.js",
+    "static/js/787.20ace30e.chunk.js": "/static/js/787.20ace30e.chunk.js",
+    "static/media/win.jpeg": "/static/media/win.a1b0bfdf742372ac62d8.jpeg",
+    "static/media/hangman9.jpeg": "/static/media/hangman9.f0b95d0268dc3ff3a331.jpeg",
+    "static/media/hangman8.jpeg": "/static/media/hangman8.ad1ec2a7899640076ee5.jpeg",
+    "static/media/hangman7.jpeg": "/static/media/hangman7.33cfdc4b72ed0c909ced.jpeg",
+    "static/media/hangman6.jpeg": "/static/media/hangman6.6444ed726cd054aa1395.jpeg",
+    "static/media/hangman5.jpeg": "/static/media/hangman5.2112dfd6ff504c2108aa.jpeg",
+    "static/media/hangman4.jpeg": "/static/media/hangman4.b3ddd19d54998d7dad37.jpeg",
+    "static/media/hangman3.jpeg": "/static/media/hangman3.0d387256d1999350e3a8.jpeg",
+    "static/media/hangman2.jpeg": "/static/media/hangman2.c4a71a5a6c7950783a43.jpeg",
+    "static/media/hangman1.jpeg": "/static/media/hangman1.3bb508f5c2b07f3177fd.jpeg",
+    "index.html": "/index.html",
+    "main.7b14d381.css.map": "/static/css/main.7b14d381.css.map",
+    "main.9ea701ef.js.map": "/static/js/main.9ea701ef.js.map",
+    "787.20ace30e.chunk.js.map": "/static/js/787.20ace30e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7b14d381.css",
+    "static/js/main.9ea701ef.js"
+  ]
+}
