@@ -1,3 +1,8 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #hangman {
   display: flex;
   flex-direction: column;
@@ -5,7 +10,7 @@
   border-width: 20px;
   border-radius: 10px;
   width: 700px;
-  height: 400px;
+  height: 450px;
   align-content: center;
 }
 #upper {
@@ -40,10 +45,17 @@ button {
 #spacesContainer {
   display: flex;
   align-items: center;
+  align-content: center;
 }
 .correct {
-  background-color: greenyellow;
+  background-color: #a5f0a7;
 }
 .incorrect {
-  background-color: red;
+  background-color: #db5351;
+}
+#mistakes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
 }

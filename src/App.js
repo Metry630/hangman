@@ -95,7 +95,6 @@ function App() {
       )
     }
   }
-console.log(currentWord)
   function Spaces(){
     let i = 0;
     let arr = splitCurrentWord.map(function(letter){
@@ -120,7 +119,6 @@ console.log(currentWord)
       }
     }
   }
-  console.log(revealedLetters)
   return(
     <div id ="hangman">
     <div id="upper">
