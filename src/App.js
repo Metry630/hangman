@@ -8,6 +8,10 @@ import hangman4 from './img/hangman4.jpeg'
 import hangman5 from './img/hangman5.jpeg'
 import hangman6 from './img/hangman6.jpeg'
 import hangman7 from './img/hangman7.jpeg'
+import hangman8 from './img/hangman8.jpeg'
+import hangman9 from './img/hangman9.jpeg'
+import hangman10 from './img/hangman8.jpeg'
+import win from './img/win.jpeg'
 export default App
 const letters = [
   {letter: 'A', id: 1}, 
@@ -53,48 +57,69 @@ function App() {
       return(
         <div id = "mistakes">
           <img src={hangman1}></img>
-          <h3>Mistakes left: 6</h3>
+          <h3>Mistakes left: 9</h3>
         </div>
       )
     }else if(numMistakes === 1){
       return(
         <div id = "mistakes">
           <img src={hangman2}></img>
-          <h3>Mistakes left: 5</h3>
+          <h3>Mistakes left: 8</h3>
         </div>
       )
     }else if(numMistakes === 2){
       return(
         <div id = "mistakes">
           <img src={hangman3}></img>
-          <h3>Mistakes left: 4</h3>
+          <h3>Mistakes left: 7</h3>
         </div>
       )
     }else if(numMistakes === 3){
       return(
         <div id = "mistakes">
           <img src={hangman4}></img>
-          <h3>Mistakes left: 3</h3>
+          <h3>Mistakes left: 6</h3>
         </div>
       )
     }else if(numMistakes === 4){
       return(
         <div id = "mistakes">
           <img src={hangman5}></img>
-          <h3>Mistakes left: 2</h3>
+          <h3>Mistakes left: 5</h3>
         </div>
       )
     }else if(numMistakes === 5){
       return(
         <div id = "mistakes">
           <img src={hangman6}></img>
-          <h3>Mistakes left: 1</h3>
+          <h3>Mistakes left: 4</h3>
         </div>
       )
     }else if(numMistakes === 6){
       return(
         <div id = "mistakes">
           <img src={hangman7}></img>
+          <h3>Mistakes left: 3</h3>
+        </div>
+      )
+    }else if(numMistakes === 7){
+      return(
+        <div id = "mistakes">
+          <img src={hangman8}></img>
+          <h3>Mistakes left: 2</h3>
+        </div>
+      )
+    }else if(numMistakes === 8){
+      return(
+        <div id = "mistakes">
+          <img src={hangman9}></img>
+          <h3>Mistakes left: 1</h3>
+        </div>
+      )
+    }else if(numMistakes === 9){
+      return(
+        <div id = "mistakes">
+          <img src={hangman10}></img>
           <h3>You lose! The word was {currentWord}</h3>
         </div>
       )
@@ -127,7 +152,7 @@ function App() {
   function Win(){
     return(
       <div id = "mistakes">
-        <img src={winner}></img>
+        <img src={win}></img>
         <h3>You Win!</h3>
       </div>
     )
