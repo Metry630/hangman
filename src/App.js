@@ -11,7 +11,7 @@ import hangman6 from './img/hangman6.jpeg'
 import hangman7 from './img/hangman7.jpeg'
 import hangman8 from './img/hangman8.jpeg'
 import hangman9 from './img/hangman9.jpeg'
-import hangman10 from './img/hangman8.jpeg'
+import hangman10 from './img/hangman10.jpeg'
 import win from './img/win.jpeg'
 export default App
 const letters = [
