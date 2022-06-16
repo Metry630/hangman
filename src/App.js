@@ -12,7 +12,7 @@ function App() {
   const [revealedLetters, setRevealedLetters] = useState([]);
   const [numMistakes, setNumMistakes] = useState(0);
   
-  function handleClick(letter){
+  const handleClick = (letter) => {
     if(revealedLetters.includes(letter) === false){
       setRevealedLetters([...revealedLetters, letter])
       if(splitCurrentWord.includes(letter) === false){
