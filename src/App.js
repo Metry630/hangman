@@ -44,7 +44,7 @@ function App() {
     </div>
     <div id = "lower">
       <div id = "buttons1">
-      {firstHalfLetters.map((letter) => <button onClick={() => handleClick(letter)} 
+      {firstHalfLetters.map((letter, idx) => <button key = {idx} onClick={() => handleClick(letter)} 
       className = {!revealedLetters.includes(letter) ? "regular letter" : 
       revealedLetters.includes(letter) && splitCurrentWord.includes(letter) ? "correct letter" : 
       "incorrect letter"}>{letter}</button>)}

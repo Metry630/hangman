@@ -13,9 +13,9 @@ export function Spaces({ splitCurrentWord, revealedLetters }){
   let i = 0;
   return(
     <ul id = "spaces">
-      {splitCurrentWord.map(function(letter){
+      {splitCurrentWord.map(function(letter, idx){
     const letterDisplay = revealedLetters.includes(letter) ? letter : '_';
-    return <li key = {i++}>{letterDisplay}</li>
+    return <li key = {idx}>{letterDisplay}</li>
   })}
     </ul>
   )
