@@ -17,7 +17,7 @@ let arrNinePartOne = nineStringPartOne.split(" ");
 let arrNinePartTwo = nineStringPartTwo.split(" ");
 let arrTen = tenString.split(" ");
 let wordBase = arrSix.concat(arrSeven, arrEight, arrNinePartOne, arrNinePartTwo, arrTen)
-export default function GetRandomWord(){
+export default function getRandomWord(){
     let randomIndex = Math.floor(Math.random()*(wordBase.length -1))
     return wordBase[randomIndex]
 };
