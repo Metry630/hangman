@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import React from 'react'
 import './App.css';
-import RandomWord from './words.js'
+import GetRandomWord from './words.js'
 import { Spaces } from './components.js'
 import { MistakeCountDisplay } from './components.js';
 
-let currentWord = RandomWord();
+let currentWord = GetRandomWord();
 let splitCurrentWord = currentWord.split('')
 
 function App() {

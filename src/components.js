@@ -11,19 +11,16 @@ import hangman10 from './img/hangman10.jpeg'
 import win from './img/win.jpeg'
 export function Spaces({ splitCurrentWord, revealedLetters }){
   let i = 0;
-  let arr = splitCurrentWord.map(function(letter){
-    if(revealedLetters.includes(letter)){
-      return <li className='space' key = {i++}>{letter}</li>
-    }else{
-      return <li className='space' key = {i++}>_</li>
-    }
-  })
   return(
     <ul id = "spaces">
-      {arr}
+      {splitCurrentWord.map(function(letter){
+    const letterDisplay = revealedLetters.includes(letter) ? letter : '_';
+    return <li key = {i++}>{letterDisplay}</li>
+  })}
     </ul>
   )
 }
+
 export function MistakeCountDisplay({ revealedLetters, splitCurrentWord, numMistakes }){
     if(splitCurrentWord.every(element => {
       return revealedLetters.includes(element);
