@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import React from 'react'
 import './App.css';
-import GetRandomWord from './words.js'
+import getRandomWord from './words.js'
 import { Spaces } from './components.js'
 import { MistakeCountDisplay } from './components.js';
 
-let currentWord = GetRandomWord();
+let currentWord = getRandomWord();
 let splitCurrentWord= currentWord.split('')
 const firstHalfLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'];
 const secondHalfLetters = ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
