@@ -1,12 +1,15 @@
 import { useState } from "react";
 import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import "./App.css";
 import getRandomWord from "./words.js";
 import { Spaces } from "./components.js";
 import { MistakeCountDisplay } from "./components.js";
-
-let currentWord = getRandomWord();
-let splitCurrentWord = currentWord.split("");
 const firstHalfLetters = [
   "A",
   "B",
@@ -38,6 +41,8 @@ const secondHalfLetters = [
   "Z",
 ];
 function App() {
+  const [currentWord, setCurrentWord] = useState(getRandomWord())
+  let splitCurrentWord = currentWord.split("");
   const [revealedLetters, setRevealedLetters] = useState([]);
   const [numMistakes, setNumMistakes] = useState(0);
 
@@ -50,7 +55,9 @@ function App() {
     }
   };
   function reload() {
-    window.location.reload(false);
+    setNumMistakes(0);
+    setRevealedLetters([]);
+    setCurrentWord(getRandomWord())
   }
   return (
     <div id="hangman">
