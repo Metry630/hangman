@@ -92,14 +92,15 @@ export function Settings(){
         [...allowedWordLengths, number]
       )
   }
-  console.log(allowedWordLengths)
   return(
-    <>
+    <div className = "allowedLengths">
+      <div className='checkboxes'>
       <label for="six">
         6
         <input
           type="checkbox"
           name="six"
+          defaultChecked = {true}
           onChange={() => handleOnChange(6)}
         />
       </label>
@@ -108,6 +109,7 @@ export function Settings(){
         <input
           type="checkbox"
           name="seven"
+          defaultChecked = {true}
           onChange={() => handleOnChange(7)}
         />
       </label>
@@ -116,6 +118,7 @@ export function Settings(){
         <input
           type="checkbox"
           name="eight"
+          defaultChecked = {true}
           onChange={() => handleOnChange(8)}
         />
       </label>
@@ -124,6 +127,7 @@ export function Settings(){
         <input
           type="checkbox"
           name="nine"
+          defaultChecked = {true}
           onChange={() => handleOnChange(9)}
         />
       </label>
@@ -132,10 +136,12 @@ export function Settings(){
         <input
           type="checkbox"
           name="ten"
+          defaultChecked = {true}
           onChange={() => handleOnChange(10)}
         />
       </label>
-    </>
+      </div>
+    </div>
   )
 }
 /*
