@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import hangman1 from "./img/hangman1.jpeg";
 import hangman2 from "./img/hangman2.jpeg";
 import hangman3 from "./img/hangman3.jpeg";
@@ -10,7 +11,6 @@ import hangman9 from "./img/hangman9.jpeg";
 import hangman10 from "./img/hangman10.jpeg";
 import win from "./img/win.jpeg";
 export function Spaces({ splitCurrentWord, revealedLetters }) {
-  let i = 0;
   return (
     <ul id="spaces">
       {splitCurrentWord.map(function (letter, idx) {
@@ -73,3 +73,79 @@ export function MistakeCountDisplay({
     );
   }
 }
+
+export function Settings(){
+  const [allowedWordLengths, setAllowedWordLengths] = useState([6, 7, 8, 9, 10])
+  console.log(allowedWordLengths)
+
+  function handleOnChange(number){
+    let nextWordLengths = allowedWordLengths.map(wordLength => {
+      if(wordLength !== number){
+        return wordLength
+      }else{
+        return 69
+      }
+    })
+    allowedWordLengths.includes(number) ? setAllowedWordLengths(
+      nextWordLengths.filter(number => number!= 69)
+    ) : setAllowedWordLengths(
+        [...allowedWordLengths, number]
+      )
+  }
+  console.log(allowedWordLengths)
+  return(
+    <>
+      <label for="six">
+        6
+        <input
+          type="checkbox"
+          name="six"
+          onChange={() => handleOnChange(6)}
+        />
+      </label>
+      <label for="seven">
+        7
+        <input
+          type="checkbox"
+          name="seven"
+          onChange={() => handleOnChange(7)}
+        />
+      </label>
+      <label for="eight">
+        8
+        <input
+          type="checkbox"
+          name="eight"
+          onChange={() => handleOnChange(8)}
+        />
+      </label>
+      <label for="nine">
+        9
+        <input
+          type="checkbox"
+          name="nine"
+          onChange={() => handleOnChange(9)}
+        />
+      </label>
+      <label for="ten">
+        10
+        <input
+          type="checkbox"
+          name="ten"
+          onChange={() => handleOnChange(10)}
+        />
+      </label>
+    </>
+  )
+}
+/*
+<input
+                    type="checkbox"
+                    id={`custom-checkbox-${index}`}
+                    name={name}
+                    value={name}
+                    checked={checkedState[index]}
+                    onChange={() => handleOnChange(index)}
+                  />
+                  <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+*/
