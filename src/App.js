@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import getRandomWord from "./words.js";
-import { Settings } from "./components.js"
 import { Spaces } from "./components.js";
 import { MistakeCountDisplay } from "./components.js";
 const firstHalfLetters = [
@@ -41,11 +40,11 @@ const secondHalfLetters = [
   "Y",
   "Z",
 ];
-function Game() {
-  const [currentWord, setCurrentWord] = useState(getRandomWord())
+function Game({ disallowedWordLengths }) {
+  const [currentWord, setCurrentWord] = useState(getRandomWord(disallowedWordLengths))
+  console.log(currentWord)
   const [revealedLetters, setRevealedLetters] = useState([]);
   const [numMistakes, setNumMistakes] = useState(0);
-  const [disallowedWordLength, setDisallowedWordLength] = useState([])
   let splitCurrentWord = currentWord.split("");
 
   const handleClick = (letter) => {
@@ -121,6 +120,69 @@ function Game() {
 }
 
 function App(){
+  const [disallowedWordLengths, setDisallowedWordLengths] = useState([6, 7, 8, 9, 10])
+  function Settings(){
+    function handleOnChange(number){
+      disallowedWordLengths.includes(number) ? setDisallowedWordLengths(
+        disallowedWordLengths.filter(current => current != number)
+      ) : setDisallowedWordLengths(
+          [...disallowedWordLengths, number]
+        )
+        console.log(disallowedWordLengths)
+    }
+    return(
+      <div className = "disallowedLengths">
+        Disallowed word lengths:
+        <div className='checkboxes'>
+        <label for="six">
+          6
+          <input
+            type="checkbox"
+            name="six"
+            checked = {disallowedWordLengths.includes(6) ? "" : "checked"}
+            onChange={() => handleOnChange(6)}
+          />
+        </label>
+        <label for="seven">
+          7
+          <input
+            type="checkbox"
+            name="seven"
+            checked = {disallowedWordLengths.includes(7) ? "" : "checked"}
+            onChange={() => handleOnChange(7)}
+          />
+        </label>
+        <label for="eight">
+          8
+          <input
+            type="checkbox"
+            name="eight"
+            checked = {disallowedWordLengths.includes(8) ? "" : "checked"}
+            onChange={() => handleOnChange(8)}
+          />
+        </label>
+        <label for="nine">
+          9
+          <input
+            type="checkbox"
+            name="nine"
+            checked = {disallowedWordLengths.includes(9) ? "" : "checked"}
+            onChange={() => handleOnChange(9)}
+          />
+        </label>
+        <label for="ten">
+          10
+          <input
+            type="checkbox"
+            name="ten"
+            checked = {disallowedWordLengths.includes(10) ? "" : "checked"}
+            onChange={() => handleOnChange(10)}
+          />
+        </label>
+        </div>
+      </div>
+    )
+  }
   return(
     <>
       <Router>
@@ -129,22 +191,9 @@ function App(){
           <Route exact path = "/settings" element = {<Settings />}></Route>
         </Routes>
       </Router>
-      <Game />
+      <Game disallowedWordLengths={disallowedWordLengths} />
     </>
   )
 }
 
 export default App;
-/*
-<Router>
-            <Link to="/menu">Menu</Link>
-          </Router>
-          <Routes>
-            <Route path="/menu">
-              <Menu 
-                allowedWordLength = {allowedWordLength}
-                splitCurrentWord = {splitCurrentWord}
-                />
-            </Route>
-          </Routes>
-*/
