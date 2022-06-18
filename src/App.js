@@ -58,7 +58,7 @@ function Game({ disallowedWordLengths }) {
   function reload() {
     setNumMistakes(0);
     setRevealedLetters([]);
-    setCurrentWord(getRandomWord())
+    setCurrentWord(getRandomWord(disallowedWordLengths))
   }
   return (
     <div id="hangman">
