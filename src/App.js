@@ -2,12 +2,13 @@ import { useState } from "react";
 import React from "react";
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
   Link
 } from "react-router-dom";
 import "./App.css";
 import getRandomWord from "./words.js";
+import { Settings } from "./components.js"
 import { Spaces } from "./components.js";
 import { MistakeCountDisplay } from "./components.js";
 const firstHalfLetters = [
@@ -40,11 +41,12 @@ const secondHalfLetters = [
   "Y",
   "Z",
 ];
-function App() {
+function Game() {
   const [currentWord, setCurrentWord] = useState(getRandomWord())
-  let splitCurrentWord = currentWord.split("");
   const [revealedLetters, setRevealedLetters] = useState([]);
   const [numMistakes, setNumMistakes] = useState(0);
+  const [disallowedWordLength, setDisallowedWordLength] = useState([])
+  let splitCurrentWord = currentWord.split("");
 
   const handleClick = (letter) => {
     if (revealedLetters.includes(letter) === false) {
@@ -63,9 +65,7 @@ function App() {
     <div id="hangman">
       <div id="upper">
         <div>
-          <button onClick={reload} id="reload">
-            New game
-          </button>
+          <button onClick={reload}>New Game</button>
           <div id="spacesContainer">
             <Spaces
               revealedLetters={revealedLetters}
@@ -119,4 +119,32 @@ function App() {
     </div>
   );
 }
+
+function App(){
+  return(
+    <>
+      <Router>
+        <Link to = "/settings">Settings</Link>
+        <Routes>
+          <Route exact path = "/settings" element = {<Settings />}></Route>
+        </Routes>
+      </Router>
+      <Game />
+    </>
+  )
+}
+
 export default App;
+/*
+<Router>
+            <Link to="/menu">Menu</Link>
+          </Router>
+          <Routes>
+            <Route path="/menu">
+              <Menu 
+                allowedWordLength = {allowedWordLength}
+                splitCurrentWord = {splitCurrentWord}
+                />
+            </Route>
+          </Routes>
+*/
