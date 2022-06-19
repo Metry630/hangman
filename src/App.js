@@ -10,6 +10,7 @@ import "./App.css";
 import getRandomWord from "./words.js";
 import { Spaces } from "./components.js";
 import { MistakeCountDisplay } from "./components.js";
+import styled from "styled-components";
 const firstHalfLetters = [
   "A",
   "B",
@@ -40,8 +41,60 @@ const secondHalfLetters = [
   "Y",
   "Z",
 ];
+const Hangman = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-style: groove;
+  border-width: 20px;
+  border-radius: 10px;
+  width: 700px;
+  height: 450px;
+  align-content: center;
+`
+const Upper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+const Lower = styled.div `
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+`
+const SpacesContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`
+const Buttons1 = styled.div`
+  display: flex;
+  gap: 5px;
+`
+const Buttons2 = styled.div`
+  display: flex;
+  gap: 5px;
+`
+const Reload = styled.button`
+  margin: 10px;
+  font-size: 25px;
+  background-color: '#eeeee4z'
+`
+const LetterInput = styled.button`
+  font-size: 25px;
+  width: 40px;
+  height: 40px;
+  background-color: ${props =>
+    !props.revealedLetters.includes(props.letter)
+    ? '#eeeee4'
+    : props.revealedLetters.includes(props.letter) &&
+      props.splitCurrentWord.includes(props.letter)
+    ? '#a5f0a7'
+    : '#db5351'
+  }
+`
 function Game({ allowedWordLengths }) {
   const [currentWord, setCurrentWord] = useState(getRandomWord(allowedWordLengths))
+  console.log(currentWord)
   const [revealedLetters, setRevealedLetters] = useState([]);
   const [numMistakes, setNumMistakes] = useState(0);
   let splitCurrentWord = currentWord.split("");
@@ -60,69 +113,59 @@ function Game({ allowedWordLengths }) {
     setCurrentWord(getRandomWord(allowedWordLengths))
   }
   return (
-    <div id="hangman">
-      <div id="upper">
+    <Hangman>
+      <Upper>
         <div>
-          <button onClick={reload}>New Game</button>
-          <div id="spacesContainer">
+          <Reload onClick={reload}>New Game</Reload>
+          <SpacesContainer>
             <Spaces
               revealedLetters={revealedLetters}
               splitCurrentWord={splitCurrentWord}
             />
-          </div>
+          </SpacesContainer>
         </div>
         <MistakeCountDisplay
           numMistakes={numMistakes}
           splitCurrentWord={splitCurrentWord}
           revealedLetters={revealedLetters}
         />
-      </div>
-      <div id="lower">
-        <div id="buttons1">
+      </Upper>
+      <Lower>
+        <Buttons1>
           {firstHalfLetters.map((letter, idx) => (
-            <button
+            <LetterInput
               key={idx}
               onClick={() => handleClick(letter)}
-              className={
-                !revealedLetters.includes(letter)
-                  ? "regular letter"
-                  : revealedLetters.includes(letter) &&
-                    splitCurrentWord.includes(letter)
-                  ? "correct letter"
-                  : "incorrect letter"
-              }
+              revealedLetters = {revealedLetters}
+              splitCurrentWord = {splitCurrentWord}
+              letter = {letter}
             >
               {letter}
-            </button>
+            </LetterInput>
           ))}
-        </div>
-        <div id="buttons2">
+        </Buttons1>
+        <Buttons2>
           {secondHalfLetters.map((letter, idx) => (
-            <button
+            <LetterInput
               key = {idx}
               onClick={() => handleClick(letter)}
-              className={
-                !revealedLetters.includes(letter)
-                  ? "regular letter"
-                  : revealedLetters.includes(letter) &&
-                    splitCurrentWord.includes(letter)
-                  ? "correct letter"
-                  : "incorrect letter"
-              }
+              revealedLetters = {revealedLetters}
+              splitCurrentWord = {splitCurrentWord}
+              letter = {letter}
             >
               {letter}
-            </button>
+            </LetterInput>
           ))}
-        </div>
-      </div>
-    </div>
+        </Buttons2>
+      </Lower>
+    </Hangman>
   );
 }
 
 function App(){
   const [allowedWordLengths, setAllowedWordLengths] = useState([6, 7, 8, 9, 10])
   function Settings(){
-    function handleOnChange(number){
+    const handleOnChange = (number) => {
       allowedWordLengths.includes(number) ? setAllowedWordLengths(
         allowedWordLengths.filter(current => current != number)
       ) : setAllowedWordLengths(

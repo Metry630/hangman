@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import styled from "styled-components";
 import hangman1 from "./img/hangman1.jpeg";
 import hangman2 from "./img/hangman2.jpeg";
 import hangman3 from "./img/hangman3.jpeg";
@@ -10,14 +10,30 @@ import hangman8 from "./img/hangman8.jpeg";
 import hangman9 from "./img/hangman9.jpeg";
 import hangman10 from "./img/hangman10.jpeg";
 import win from "./img/win.jpeg";
+const Mistakes = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 5px;
+`
+const SpacesDisplay = styled.ul`
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  font-size: 30px;
+`
+const Image = styled.img`
+  width: 250px;
+  height: auto;
+`
 export function Spaces({ splitCurrentWord, revealedLetters }) {
   return (
-    <ul id="spaces">
+    <SpacesDisplay>
       {splitCurrentWord.map(function (letter, idx) {
         const letterDisplay = revealedLetters.includes(letter) ? letter : "_";
         return <li key={idx}>{letterDisplay}</li>;
       })}
-    </ul>
+    </SpacesDisplay>
   );
 }
 
@@ -32,15 +48,15 @@ export function MistakeCountDisplay({
     })
   ) {
     return (
-      <div id="mistakes">
-        <img src={win}></img>
+      <Mistakes>
+        <Image src={win}></Image>
         <h3>You Win!</h3>
-      </div>
+      </Mistakes>
     );
   } else if (numMistakes < 9) {
     return (
-      <div id="mistakes">
-        <img
+      <Mistakes>
+        <Image
           src={
             numMistakes === 0
               ? hangman1
@@ -60,9 +76,9 @@ export function MistakeCountDisplay({
               ? hangman8
               : hangman9
           }
-        ></img>
+        ></Image>
         <h3>Mistakes left: {9 - numMistakes}</h3>
-      </div>
+      </Mistakes>
     );
   } else if (numMistakes >= 9) {
     return (
@@ -73,5 +89,6 @@ export function MistakeCountDisplay({
     );
   }
 }
+
 
 
