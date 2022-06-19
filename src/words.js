@@ -29,9 +29,8 @@ let wordBase = arrSix.concat(
   arrNinePartTwo,
   arrTen
 );
-export default function getRandomWord(disallowedLengths) {
-    let filteredWordBase = wordBase.filter(word => disallowedLengths.includes(word.length) === true)
+export default function getRandomWord(allowedLengths) {
+    let filteredWordBase = wordBase.filter(word => allowedLengths.includes(word.length) === true)
     let randomIndex = Math.floor(Math.random() * (filteredWordBase.length - 1));
-    console.log(filteredWordBase)
     return filteredWordBase[randomIndex];
 }
