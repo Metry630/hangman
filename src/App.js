@@ -97,8 +97,9 @@ function Game({ allowedWordLengths }) {
           ))}
         </div>
         <div id="buttons2">
-          {secondHalfLetters.map((letter) => (
+          {secondHalfLetters.map((letter, idx) => (
             <button
+              key = {idx}
               onClick={() => handleClick(letter)}
               className={
                 !revealedLetters.includes(letter)
@@ -132,51 +133,17 @@ function App(){
       <div className = "disallowedLengths">
         Allowed word lengths:
         <div className='checkboxes'>
-        <label for="six">
-          6
+        {[6, 7, 8, 9, 10].map((number) => (
+          <label>
+          {number}
           <input
             type="checkbox"
-            name="six"
-            checked = {allowedWordLengths.includes(6) ? "checked" : ""}
-            onChange={() => handleOnChange(6)}
+            name={number}
+            checked = {allowedWordLengths.includes(number) ? "checked" : ""}
+            onChange={() => handleOnChange(number)}
           />
         </label>
-        <label for="seven">
-          7
-          <input
-            type="checkbox"
-            name="seven"
-            checked = {allowedWordLengths.includes(7) ? "checked" : ""}
-            onChange={() => handleOnChange(7)}
-          />
-        </label>
-        <label for="eight">
-          8
-          <input
-            type="checkbox"
-            name="eight"
-            checked = {allowedWordLengths.includes(8) ? "checked" : ""}
-            onChange={() => handleOnChange(8)}
-          />
-        </label>
-        <label for="nine">
-          9
-          <input
-            type="checkbox"
-            name="nine"
-            checked = {allowedWordLengths.includes(9) ? "checked" : ""}
-            onChange={() => handleOnChange(9)}
-          />
-        </label>
-        <label for="ten">
-          10
-          <input
-            type="checkbox"
-            name="ten"
-            checked = {allowedWordLengths.includes(10) ? "checked" : ""}
-            onChange={() => handleOnChange(10)}
-          />
-        </label>
+        ))}
         </div>
       </div>
     )
@@ -184,12 +151,16 @@ function App(){
   return(
     <>
       <Router>
-        <Link to = "/settings">Settings</Link>
+        <nav>
+          <Link to = "/settings">Settings</Link>
+          <Link to = "/game">Game</Link>
+        </nav>
+
         <Routes>
           <Route exact path = "/settings" element = {<Settings />}></Route>
+          <Route exact path = "/game" element = {<Game allowedWordLengths={allowedWordLengths}/>}></Route>
         </Routes>
       </Router>
-      <Game allowedWordLengths={allowedWordLengths} />
     </>
   )
 }
