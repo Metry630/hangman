@@ -1,11 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import getRandomWord from "./words.js";
 import { Spaces } from "./components.js";
@@ -50,59 +45,59 @@ const Hangman = styled.div`
   width: 700px;
   height: 450px;
   align-content: center;
-`
+`;
 const Upper = styled.div`
   display: flex;
   justify-content: space-between;
-`
-const Lower = styled.div `
+`;
+const Lower = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
   align-items: center;
-`
+`;
 const SpacesContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-`
+`;
 const Buttons1 = styled.div`
   display: flex;
   gap: 5px;
-`
+`;
 const Buttons2 = styled.div`
   display: flex;
   gap: 5px;
-`
+`;
 const Reload = styled.button`
   margin: 10px;
   font-size: 25px;
-  background-color: '#eeeee4z'
-`
+  background-color: "#eeeee4z";
+`;
 const LetterInput = styled.button`
   font-size: 25px;
   width: 40px;
   height: 40px;
-  background-color: ${props =>
+  background-color: ${(props) =>
     !props.revealedLetters.includes(props.letter)
-    ? '#eeeee4'
-    : props.revealedLetters.includes(props.letter) &&
-      props.splitCurrentWord.includes(props.letter)
-    ? '#a5f0a7'
-    : '#db5351'
-  }
-`
+      ? "#eeeee4"
+      : props.revealedLetters.includes(props.letter) &&
+        props.splitCurrentWord.includes(props.letter)
+      ? "#a5f0a7"
+      : "#db5351"};
+`;
 const linkStyle = {
-  textDecoration: 'none',
-  color: 'black',
-  margin: '5px'
-}
+  textDecoration: "none",
+  color: "black",
+  margin: "5px",
+};
 const Checkbox = styled.input`
-  margin: 5px
-`
+  margin: 5px;
+`;
 function Game({ allowedWordLengths }) {
-  const [currentWord, setCurrentWord] = useState(getRandomWord(allowedWordLengths))
-  console.log(currentWord)
+  const [currentWord, setCurrentWord] = useState(
+    getRandomWord(allowedWordLengths)
+  );
   const [revealedLetters, setRevealedLetters] = useState([]);
   const [numMistakes, setNumMistakes] = useState(0);
   let splitCurrentWord = currentWord.split("");
@@ -118,7 +113,7 @@ function Game({ allowedWordLengths }) {
   function reload() {
     setNumMistakes(0);
     setRevealedLetters([]);
-    setCurrentWord(getRandomWord(allowedWordLengths))
+    setCurrentWord(getRandomWord(allowedWordLengths));
   }
   return (
     <Hangman>
@@ -144,9 +139,9 @@ function Game({ allowedWordLengths }) {
             <LetterInput
               key={idx}
               onClick={() => handleClick(letter)}
-              revealedLetters = {revealedLetters}
-              splitCurrentWord = {splitCurrentWord}
-              letter = {letter}
+              revealedLetters={revealedLetters}
+              splitCurrentWord={splitCurrentWord}
+              letter={letter}
             >
               {letter}
             </LetterInput>
@@ -155,11 +150,11 @@ function Game({ allowedWordLengths }) {
         <Buttons2>
           {secondHalfLetters.map((letter, idx) => (
             <LetterInput
-              key = {idx}
+              key={idx}
               onClick={() => handleClick(letter)}
-              revealedLetters = {revealedLetters}
-              splitCurrentWord = {splitCurrentWord}
-              letter = {letter}
+              revealedLetters={revealedLetters}
+              splitCurrentWord={splitCurrentWord}
+              letter={letter}
             >
               {letter}
             </LetterInput>
@@ -170,50 +165,60 @@ function Game({ allowedWordLengths }) {
   );
 }
 
-function App(){
-  const [allowedWordLengths, setAllowedWordLengths] = useState([6, 7, 8, 9, 10])
-  function Settings(){
+function App() {
+  const [allowedWordLengths, setAllowedWordLengths] = useState([
+    6, 7, 8, 9, 10,
+  ]);
+  function Settings() {
     const handleOnChange = (number) => {
-      allowedWordLengths.includes(number) ? setAllowedWordLengths(
-        allowedWordLengths.filter(current => current != number)
-      ) : setAllowedWordLengths(
-          [...allowedWordLengths, number]
-        )
-    }
-    return(
-      <div className = "disallowedLengths">
+      allowedWordLengths.includes(number)
+        ? setAllowedWordLengths(
+            allowedWordLengths.filter((current) => current != number)
+          )
+        : setAllowedWordLengths([...allowedWordLengths, number]);
+    };
+    return (
+      <div className="disallowedLengths">
         Allowed word lengths:
-        <div className='checkboxes'>
-        {[6, 7, 8, 9, 10].map((number) => (
-          <label>
-          {number}
-          <Checkbox
-            type="checkbox"
-            name={number}
-            checked = {allowedWordLengths.includes(number) ? "checked" : ""}
-            onChange={() => handleOnChange(number)}
-          />
-        </label>
-        ))}
+        <div className="checkboxes">
+          {[6, 7, 8, 9, 10].map((number) => (
+            <label>
+              {number}
+              <Checkbox
+                type="checkbox"
+                name={number}
+                checked={allowedWordLengths.includes(number) ? "checked" : ""}
+                onChange={() => handleOnChange(number)}
+              />
+            </label>
+          ))}
         </div>
       </div>
-    )
+    );
   }
-  return(
+  return (
     <>
       <Router>
         <nav>
-          <Link to = "/settings" style={linkStyle}>Settings</Link>
-          <Link to = "/game" style={linkStyle}>Game</Link>
+          <Link to="/settings" style={linkStyle}>
+            Settings
+          </Link>
+          <Link to="/game" style={linkStyle}>
+            Game
+          </Link>
         </nav>
 
         <Routes>
-          <Route exact path = "/settings" element = {<Settings />}></Route>
-          <Route exact path = "/game" element = {<Game allowedWordLengths={allowedWordLengths}/>}></Route>
+          <Route exact path="/settings" element={<Settings />}></Route>
+          <Route
+            exact
+            path="/game"
+            element={<Game allowedWordLengths={allowedWordLengths} />}
+          ></Route>
         </Routes>
       </Router>
     </>
-  )
+  );
 }
 
 export default App;

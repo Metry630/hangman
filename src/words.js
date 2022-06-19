@@ -30,7 +30,9 @@ let wordBase = arrSix.concat(
   arrTen
 );
 export default function getRandomWord(allowedLengths) {
-    let filteredWordBase = wordBase.filter(word => allowedLengths.includes(word.length) === true)
-    let randomIndex = Math.floor(Math.random() * (filteredWordBase.length - 1));
-    return filteredWordBase[randomIndex];
+  let filteredWordBase = wordBase.filter(
+    (word) => allowedLengths.includes(word.length) === true
+  );
+  let randomIndex = Math.floor(Math.random() * (filteredWordBase.length - 1));
+  return filteredWordBase[randomIndex];
 }
