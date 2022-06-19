@@ -84,11 +84,8 @@ export function MistakeCountDisplay({
     return (
       <div id="mistakes">
         <img src={hangman10}></img>
-        <h3>You lose! The word was {splitCurrentWord.join("")}</h3>
+        <h3>You lose! The word was {splitCurrentWord.join("")}.</h3>
       </div>
     );
   }
 }
-
-
-
