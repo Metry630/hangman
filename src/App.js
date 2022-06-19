@@ -92,6 +92,14 @@ const LetterInput = styled.button`
     : '#db5351'
   }
 `
+const linkStyle = {
+  textDecoration: 'none',
+  color: 'black',
+  margin: '5px'
+}
+const Checkbox = styled.input`
+  margin: 5px
+`
 function Game({ allowedWordLengths }) {
   const [currentWord, setCurrentWord] = useState(getRandomWord(allowedWordLengths))
   console.log(currentWord)
@@ -179,7 +187,7 @@ function App(){
         {[6, 7, 8, 9, 10].map((number) => (
           <label>
           {number}
-          <input
+          <Checkbox
             type="checkbox"
             name={number}
             checked = {allowedWordLengths.includes(number) ? "checked" : ""}
@@ -195,8 +203,8 @@ function App(){
     <>
       <Router>
         <nav>
-          <Link to = "/settings">Settings</Link>
-          <Link to = "/game">Game</Link>
+          <Link to = "/settings" style={linkStyle}>Settings</Link>
+          <Link to = "/game" style={linkStyle}>Game</Link>
         </nav>
 
         <Routes>
