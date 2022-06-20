@@ -4,7 +4,7 @@ const SpacesDisplay = styled.ul`
   display: flex;
   gap: 20px;
   font-size: 30px;
-`
+`;
 export function Spaces({ splitCurrentWord, revealedLetters }) {
   return (
     <SpacesDisplay>
