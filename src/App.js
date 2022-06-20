@@ -170,7 +170,7 @@ function App() {
   const [allowedWordLengths, setAllowedWordLengths] = useState([
     6, 7, 8, 9, 10,
   ]);
-  const [currentTheme, setCurrentTheme] = useState('hangman')
+  const [currentTheme, setCurrentTheme] = useState("hangman");
   function Settings() {
     const handleOnChange = (number) => {
       allowedWordLengths.includes(number)
@@ -180,8 +180,8 @@ function App() {
         : setAllowedWordLengths([...allowedWordLengths, number]);
     };
     const handleThemeChange = (event) => {
-      setCurrentTheme(event.target.value)
-    }
+      setCurrentTheme(event.target.value);
+    };
     return (
       <div>
         Allowed word lengths:
@@ -200,26 +200,26 @@ function App() {
         </div>
         Theme:
         <div className="radios">
-            <label>
-              <input
+          <label>
+            <input
               type="radio"
               value="hangman"
               name="theme"
-              checked={currentTheme === 'hangman' ? "checked" : ""}
+              checked={currentTheme === "hangman" ? "checked" : ""}
               onChange={handleThemeChange}
-              />
-              Hangman(9 lives)
-            </label>
-            <label>
-              <input
+            />
+            Hangman(9 lives)
+          </label>
+          <label>
+            <input
               type="radio"
               value="pizza"
               name="theme"
-              checked={currentTheme === 'pizza' ? "checked" : ""}
+              checked={currentTheme === "pizza" ? "checked" : ""}
               onChange={handleThemeChange}
-              />
-              Pizza(6 lives)
-            </label>
+            />
+            Pizza(6 lives)
+          </label>
         </div>
       </div>
     );
@@ -241,7 +241,12 @@ function App() {
           <Route
             exact
             path="/game"
-            element={<Game allowedWordLengths={allowedWordLengths} currentTheme={currentTheme}/>}
+            element={
+              <Game
+                allowedWordLengths={allowedWordLengths}
+                currentTheme={currentTheme}
+              />
+            }
           ></Route>
         </Routes>
       </Router>
