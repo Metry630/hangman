@@ -17,110 +17,125 @@ import pizza4 from "./img/pizza4.jpeg";
 import pizza5 from "./img/pizza5.jpeg";
 import pizza6 from "./img/pizza6.jpeg";
 import pizza7 from "./img/pizza7.jpeg";
-import pizzawin from "./img/pizzawin.jpeg"
+import pizzawin from "./img/pizzawin.jpeg";
 const Mistakes = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-right: 5px;
-`
+`;
 const Image = styled.img`
   width: 250px;
   height: auto;
-`
+`;
 export function MistakeCountDisplay({
   revealedLetters,
   splitCurrentWord,
   numMistakes,
-  currentTheme
+  currentTheme,
+  setGameFinished
 }) {
-  if(currentTheme == 'hangman'){
+  if (currentTheme === "hangman") {
     if (
-        splitCurrentWord.every((element) => {
-          return revealedLetters.includes(element);
-        })
-      ) {
-        return (
-          <Mistakes>
-            <Image src={win}></Image>
-            <h3>You Win!</h3>
-          </Mistakes>
-        );
-      } else if (numMistakes < 9) {
-        return (
-          <Mistakes>
-            <Image
-              src={
-                numMistakes === 0
-                  ? hangman1
-                  : numMistakes === 1
-                  ? hangman2
-                  : numMistakes === 2
-                  ? hangman3
-                  : numMistakes === 3
-                  ? hangman4
-                  : numMistakes === 4
-                  ? hangman5
-                  : numMistakes === 5
-                  ? hangman6
-                  : numMistakes === 6
-                  ? hangman7
-                  : numMistakes === 7
-                  ? hangman8
-                  : hangman9
-              }
-            ></Image>
-            <h3>Mistakes left: {9 - numMistakes}</h3>
-          </Mistakes>
-        );
-      } else if (numMistakes >= 9) {
-        return (
-          <div id="mistakes">
-            <Image src={hangman10}></Image>
-            <h3>You lose! The word was {splitCurrentWord.join("")}.</h3>
-          </div>
-        );
+      splitCurrentWord.every((element) => {
+        return revealedLetters.includes(element);
+      })
+    ) {
+      setGameFinished(true)
+      return (
+        <Mistakes>
+          <Image src={win}></Image>
+          <h3>You Win!</h3>
+        </Mistakes>
+      );
+    } else if (numMistakes < 9) {
+      return (
+        <Mistakes>
+          <Image src={getImageSrc(currentTheme, numMistakes)}></Image>
+          <h3>Mistakes left: {9 - numMistakes}</h3>
+        </Mistakes>
+      );
+    } else if (numMistakes >= 9) {
+      setGameFinished(true)
+      return (
+        <div id="mistakes">
+          <Image src={getImageSrc(currentTheme, numMistakes)}></Image>
+          <h3>You lose! The word was {splitCurrentWord.join("")}.</h3>
+        </div>
+      );
+    }
+  } else if ((currentTheme = "pizza")) {
+    if (
+      splitCurrentWord.every((element) => {
+        return revealedLetters.includes(element);
+      })
+    ) {
+      setGameFinished(true)
+      return (
+        <Mistakes>
+          <Image src={pizzawin}></Image>
+          <h3>You Win!</h3>
+        </Mistakes>
+      );
+    } else if (numMistakes < 6) {
+      return (
+        <Mistakes>
+          <Image src={getImageSrc(currentTheme, numMistakes)}></Image>
+          <h3>Mistakes left: {6 - numMistakes}</h3>
+        </Mistakes>
+      );
+    } else if (numMistakes >= 6) {
+      setGameFinished(true)
+      return (
+        <div id="mistakes">
+          <Image src={getImageSrc(currentTheme, numMistakes)}></Image>
+          <h3>You lose! The word was {splitCurrentWord.join("")}.</h3>
+        </div>
+      );
+    }
+  }
+}
+function getImageSrc(currentTheme, numMistakes) {
+  switch (currentTheme) {
+    case "hangman":
+      switch (numMistakes) {
+        case 0:
+          return hangman1;
+        case 1:
+          return hangman2;
+        case 2:
+          return hangman3;
+        case 3:
+          return hangman4;
+        case 4:
+          return hangman5;
+        case 5:
+          return hangman6;
+        case 6:
+          return hangman7;
+        case 7:
+          return hangman8;
+        case 8:
+          return hangman9;
+        default:
+          return hangman10;
       }
-  }else if(currentTheme == 'pizza'){
-    if (
-        splitCurrentWord.every((element) => {
-          return revealedLetters.includes(element);
-        })
-      ) {
-        return (
-          <Mistakes>
-            <Image src={pizzawin}></Image>
-            <h3>You Win!</h3>
-          </Mistakes>
-        );
-      } else if (numMistakes < 6) {
-        return (
-          <Mistakes>
-            <Image
-              src={
-                numMistakes === 0
-                  ? pizza1
-                  : numMistakes === 1
-                  ? pizza2
-                  : numMistakes === 2
-                  ? pizza3
-                  : numMistakes === 3
-                  ? pizza4
-                  : numMistakes === 4
-                  ? pizza5
-                  : pizza6
-              }
-            ></Image>
-            <h3>Mistakes left: {6 - numMistakes}</h3>
-          </Mistakes>
-        );
-      } else if (numMistakes >= 6) {
-        return (
-          <div id="mistakes">
-            <Image src={pizza7}></Image>
-            <h3>You lose! The word was {splitCurrentWord.join("")}.</h3>
-          </div>
-        );
+    case "pizza":
+      switch (numMistakes) {
+        case 0:
+          return pizza1;
+        case 1:
+          return pizza2;
+        case 2:
+          return pizza3;
+        case 3:
+          return pizza4;
+        case 4:
+          return pizza5;
+        case 5:
+          return pizza6;
+        default:
+          return pizza7;
       }
   }
 }
