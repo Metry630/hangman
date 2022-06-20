@@ -201,18 +201,16 @@ function App() {
         Theme:
         <div className="radios">
             <label>
-              Hangman(9 lives)
               <input
               type="radio"
               value="hangman"
               name="theme"
               checked={currentTheme === 'hangman' ? "checked" : ""}
               onChange={handleThemeChange}
-              
               />
+              Hangman(9 lives)
             </label>
             <label>
-              Pizza(6 lives)
               <input
               type="radio"
               value="pizza"
@@ -220,6 +218,7 @@ function App() {
               checked={currentTheme === 'pizza' ? "checked" : ""}
               onChange={handleThemeChange}
               />
+              Pizza(6 lives)
             </label>
         </div>
       </div>
