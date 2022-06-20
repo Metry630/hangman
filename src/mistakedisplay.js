@@ -18,6 +18,19 @@ import pizza5 from "./img/pizza5.jpeg";
 import pizza6 from "./img/pizza6.jpeg";
 import pizza7 from "./img/pizza7.jpeg";
 import pizzawin from "./img/pizzawin.jpeg";
+const hangmanImages = [
+  hangman1,
+  hangman2,
+  hangman3,
+  hangman4,
+  hangman5,
+  hangman6,
+  hangman7,
+  hangman8,
+  hangman9,
+  hangman10,
+];
+const pizzaImages = [pizza1, pizza2, pizza3, pizza4, pizza5, pizza6, pizza7];
 const Mistakes = styled.div`
   display: flex;
   flex-direction: column;
@@ -79,45 +92,9 @@ export function MistakeCountDisplay({
 function getImageSrc(currentTheme, numMistakes) {
   switch (currentTheme) {
     case "hangman":
-      switch (numMistakes) {
-        case 0:
-          return hangman1;
-        case 1:
-          return hangman2;
-        case 2:
-          return hangman3;
-        case 3:
-          return hangman4;
-        case 4:
-          return hangman5;
-        case 5:
-          return hangman6;
-        case 6:
-          return hangman7;
-        case 7:
-          return hangman8;
-        case 8:
-          return hangman9;
-        default:
-          return hangman10;
-      }
+      return hangmanImages[numMistakes];
     case "pizza":
-      switch (numMistakes) {
-        case 0:
-          return pizza1;
-        case 1:
-          return pizza2;
-        case 2:
-          return pizza3;
-        case 3:
-          return pizza4;
-        case 4:
-          return pizza5;
-        case 5:
-          return pizza6;
-        default:
-          return pizza7;
-      }
+      return pizzaImages[numMistakes];
   }
 }
 function getCaption(currentTheme, numMistakes, splitCurrentWord) {
