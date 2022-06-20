@@ -1,26 +1,34 @@
 {
   "files": {
-    "main.css": "/hangman/static/css/main.7b14d381.css",
-    "main.js": "/hangman/static/js/main.b7ad62b3.js",
+    "main.css": "/hangman/static/css/main.57ffebe3.css",
+    "main.js": "/hangman/static/js/main.7933ea0f.js",
     "static/js/787.20ace30e.chunk.js": "/hangman/static/js/787.20ace30e.chunk.js",
+    "static/media/pizza1.jpeg": "/hangman/static/media/pizza1.cf25f827bbd69b35ee8c.jpeg",
+    "static/media/pizza2.jpeg": "/hangman/static/media/pizza2.61f15793d9c3436dd095.jpeg",
+    "static/media/pizza3.jpeg": "/hangman/static/media/pizza3.aa3acd8f216f1cf82682.jpeg",
+    "static/media/pizza4.jpeg": "/hangman/static/media/pizza4.67082735ba5cf1b85be1.jpeg",
+    "static/media/pizza5.jpeg": "/hangman/static/media/pizza5.94476f0dd966ec93fdb4.jpeg",
     "static/media/hangman10.jpeg": "/hangman/static/media/hangman10.1b3e1d3b55829af5c930.jpeg",
+    "static/media/pizzawin.jpeg": "/hangman/static/media/pizzawin.edb0d0c1bbc0aff20a2a.jpeg",
     "static/media/win.jpeg": "/hangman/static/media/win.a1b0bfdf742372ac62d8.jpeg",
     "static/media/hangman9.jpeg": "/hangman/static/media/hangman9.f0b95d0268dc3ff3a331.jpeg",
     "static/media/hangman8.jpeg": "/hangman/static/media/hangman8.ad1ec2a7899640076ee5.jpeg",
     "static/media/hangman7.jpeg": "/hangman/static/media/hangman7.33cfdc4b72ed0c909ced.jpeg",
     "static/media/hangman6.jpeg": "/hangman/static/media/hangman6.6444ed726cd054aa1395.jpeg",
     "static/media/hangman5.jpeg": "/hangman/static/media/hangman5.2112dfd6ff504c2108aa.jpeg",
+    "static/media/pizza6.jpeg": "/hangman/static/media/pizza6.07f7e9b06518091fa8cb.jpeg",
     "static/media/hangman4.jpeg": "/hangman/static/media/hangman4.b3ddd19d54998d7dad37.jpeg",
     "static/media/hangman3.jpeg": "/hangman/static/media/hangman3.0d387256d1999350e3a8.jpeg",
     "static/media/hangman2.jpeg": "/hangman/static/media/hangman2.c4a71a5a6c7950783a43.jpeg",
     "static/media/hangman1.jpeg": "/hangman/static/media/hangman1.3bb508f5c2b07f3177fd.jpeg",
+    "static/media/pizza7.jpeg": "/hangman/static/media/pizza7.4ab4fe56693bc1ce308d.jpeg",
     "index.html": "/hangman/index.html",
-    "main.7b14d381.css.map": "/hangman/static/css/main.7b14d381.css.map",
-    "main.b7ad62b3.js.map": "/hangman/static/js/main.b7ad62b3.js.map",
+    "main.57ffebe3.css.map": "/hangman/static/css/main.57ffebe3.css.map",
+    "main.7933ea0f.js.map": "/hangman/static/js/main.7933ea0f.js.map",
     "787.20ace30e.chunk.js.map": "/hangman/static/js/787.20ace30e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7b14d381.css",
-    "static/js/main.b7ad62b3.js"
+    "static/css/main.57ffebe3.css",
+    "static/js/main.7933ea0f.js"
   ]
 }
