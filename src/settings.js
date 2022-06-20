@@ -2,6 +2,16 @@ import styled from "styled-components";
 const Checkbox = styled.input`
   margin: 5px;
 `;
+const SettingsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-style: groove;
+  border-width: 20px;
+  border-radius: 10px;
+  width: 700px;
+  height: 450px;
+  align-content: center;
+`
 export function Settings({
   allowedWordLengths,
   setAllowedWordLengths,
@@ -19,7 +29,7 @@ export function Settings({
     setCurrentTheme(event.target.value);
   };
   return (
-    <div>
+    <SettingsWrapper>
       Allowed word lengths:
       <div className="checkboxes">
         {[6, 7, 8, 9, 10].map((number) => (
@@ -57,6 +67,6 @@ export function Settings({
           Pizza(6 lives)
         </label>
       </div>
-    </div>
+    </SettingsWrapper>
   );
 }
