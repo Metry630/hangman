@@ -3,8 +3,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import getRandomWord from "./words.js";
-import { Spaces } from "./components.js";
-import { MistakeCountDisplay } from "./components.js";
+import { Spaces } from "./wordspaces.js";
+import { MistakeCountDisplay } from "./mistakedisplay.js";
 import styled from "styled-components";
 const firstHalfLetters = [
   "A",
@@ -94,7 +94,7 @@ const linkStyle = {
 const Checkbox = styled.input`
   margin: 5px;
 `;
-function Game({ allowedWordLengths }) {
+function Game({ allowedWordLengths, currentTheme }) {
   const [currentWord, setCurrentWord] = useState(
     getRandomWord(allowedWordLengths)
   );
@@ -131,6 +131,7 @@ function Game({ allowedWordLengths }) {
           numMistakes={numMistakes}
           splitCurrentWord={splitCurrentWord}
           revealedLetters={revealedLetters}
+          currentTheme={currentTheme}
         />
       </Upper>
       <Lower>
@@ -169,6 +170,7 @@ function App() {
   const [allowedWordLengths, setAllowedWordLengths] = useState([
     6, 7, 8, 9, 10,
   ]);
+  const [currentTheme, setCurrentTheme] = useState('hangman')
   function Settings() {
     const handleOnChange = (number) => {
       allowedWordLengths.includes(number)
@@ -177,8 +179,11 @@ function App() {
           )
         : setAllowedWordLengths([...allowedWordLengths, number]);
     };
+    const handleThemeChange = (event) => {
+      setCurrentTheme(event.target.value)
+    }
     return (
-      <div className="disallowedLengths">
+      <div>
         Allowed word lengths:
         <div className="checkboxes">
           {[6, 7, 8, 9, 10].map((number) => (
@@ -192,6 +197,30 @@ function App() {
               />
             </label>
           ))}
+        </div>
+        Theme:
+        <div className="radios">
+            <label>
+              Hangman(9 lives)
+              <input
+              type="radio"
+              value="hangman"
+              name="theme"
+              checked={currentTheme === 'hangman' ? "checked" : ""}
+              onChange={handleThemeChange}
+              
+              />
+            </label>
+            <label>
+              Pizza(6 lives)
+              <input
+              type="radio"
+              value="pizza"
+              name="theme"
+              checked={currentTheme === 'pizza' ? "checked" : ""}
+              onChange={handleThemeChange}
+              />
+            </label>
         </div>
       </div>
     );
@@ -213,7 +242,7 @@ function App() {
           <Route
             exact
             path="/game"
-            element={<Game allowedWordLengths={allowedWordLengths} />}
+            element={<Game allowedWordLengths={allowedWordLengths} currentTheme={currentTheme}/>}
           ></Route>
         </Routes>
       </Router>
