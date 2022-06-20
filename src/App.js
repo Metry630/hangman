@@ -3,8 +3,9 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import getRandomWord from "./words.js";
-import { Spaces } from "./wordspaces.js";
-import { MistakeCountDisplay } from "./mistakedisplay.js";
+import { Spaces } from "./wordSpaces.js";
+import { MistakeCountDisplay } from "./mistakeDisplay.js";
+import { Settings } from "./settings.js";
 import styled from "styled-components";
 const firstHalfLetters = [
   "A",
@@ -91,17 +92,13 @@ const linkStyle = {
   color: "black",
   margin: "5px",
 };
-const Checkbox = styled.input`
-  margin: 5px;
-`;
-function Game({ allowedWordLengths, currentTheme }) {
+function Game({ allowedWordLengths, currentTheme, gameFinished, setGameFinished }) {
   const [currentWord, setCurrentWord] = useState(
     getRandomWord(allowedWordLengths)
   );
   const [revealedLetters, setRevealedLetters] = useState([]);
   const [numMistakes, setNumMistakes] = useState(0);
   let splitCurrentWord = currentWord.split("");
-
   const handleClick = (letter) => {
     if (revealedLetters.includes(letter) === false) {
       setRevealedLetters([...revealedLetters, letter]);
@@ -114,6 +111,7 @@ function Game({ allowedWordLengths, currentTheme }) {
     setNumMistakes(0);
     setRevealedLetters([]);
     setCurrentWord(getRandomWord(allowedWordLengths));
+    setGameFinished(false)
   }
   return (
     <Hangman>
@@ -132,6 +130,7 @@ function Game({ allowedWordLengths, currentTheme }) {
           splitCurrentWord={splitCurrentWord}
           revealedLetters={revealedLetters}
           currentTheme={currentTheme}
+          setGameFinished={setGameFinished}
         />
       </Upper>
       <Lower>
@@ -143,6 +142,7 @@ function Game({ allowedWordLengths, currentTheme }) {
               revealedLetters={revealedLetters}
               splitCurrentWord={splitCurrentWord}
               letter={letter}
+              disabled={gameFinished}
             >
               {letter}
             </LetterInput>
@@ -156,6 +156,7 @@ function Game({ allowedWordLengths, currentTheme }) {
               revealedLetters={revealedLetters}
               splitCurrentWord={splitCurrentWord}
               letter={letter}
+              disabled={gameFinished}
             >
               {letter}
             </LetterInput>
@@ -171,59 +172,7 @@ function App() {
     6, 7, 8, 9, 10,
   ]);
   const [currentTheme, setCurrentTheme] = useState("hangman");
-  function Settings() {
-    const handleOnChange = (number) => {
-      allowedWordLengths.includes(number)
-        ? setAllowedWordLengths(
-            allowedWordLengths.filter((current) => current != number)
-          )
-        : setAllowedWordLengths([...allowedWordLengths, number]);
-    };
-    const handleThemeChange = (event) => {
-      setCurrentTheme(event.target.value);
-    };
-    return (
-      <div>
-        Allowed word lengths:
-        <div className="checkboxes">
-          {[6, 7, 8, 9, 10].map((number) => (
-            <label>
-              {number}
-              <Checkbox
-                type="checkbox"
-                name={number}
-                checked={allowedWordLengths.includes(number) ? "checked" : ""}
-                onChange={() => handleOnChange(number)}
-              />
-            </label>
-          ))}
-        </div>
-        Theme:
-        <div className="radios">
-          <label>
-            <input
-              type="radio"
-              value="hangman"
-              name="theme"
-              checked={currentTheme === "hangman" ? "checked" : ""}
-              onChange={handleThemeChange}
-            />
-            Hangman(9 lives)
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="pizza"
-              name="theme"
-              checked={currentTheme === "pizza" ? "checked" : ""}
-              onChange={handleThemeChange}
-            />
-            Pizza(6 lives)
-          </label>
-        </div>
-      </div>
-    );
-  }
+  const [gameFinished, setGameFinished] = useState(false)
   return (
     <>
       <Router>
@@ -237,7 +186,18 @@ function App() {
         </nav>
 
         <Routes>
-          <Route exact path="/settings" element={<Settings />}></Route>
+          <Route
+            exact
+            path="/settings"
+            element={
+              <Settings
+                allowedWordLengths={allowedWordLengths}
+                setAllowedWordLengths={setAllowedWordLengths}
+                currentTheme={currentTheme}
+                setCurrentTheme={setCurrentTheme}
+              />
+            }
+          ></Route>
           <Route
             exact
             path="/game"
@@ -245,6 +205,8 @@ function App() {
               <Game
                 allowedWordLengths={allowedWordLengths}
                 currentTheme={currentTheme}
+                gameFinished={gameFinished}
+                setGameFinished={setGameFinished}
               />
             }
           ></Route>
