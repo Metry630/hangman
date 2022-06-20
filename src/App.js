@@ -1,9 +1,13 @@
+// Please use prettier to autoformat the file, titik komanya ga konsisten hahaha
+// Ada beberapa == instead of === dan != instead of !==, please help to change juga
+
 import { useState } from "react";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import getRandomWord from "./words.js";
 import { Spaces } from "./wordspaces.js";
+// please use camelCase as the file name
 import { MistakeCountDisplay } from "./mistakedisplay.js";
 import styled from "styled-components";
 const firstHalfLetters = [
@@ -134,6 +138,8 @@ function Game({ allowedWordLengths, currentTheme }) {
           currentTheme={currentTheme}
         />
       </Upper>
+      {/* I tried the game dan it seems bisa lanjut pencet2 walaupun udah game over */}
+      {/* Gimana kalau dibikin ga bisa pencet lagi setelah game over? iirc ada attribute disabled gitu */}
       <Lower>
         <Buttons1>
           {firstHalfLetters.map((letter, idx) => (
@@ -167,10 +173,14 @@ function Game({ allowedWordLengths, currentTheme }) {
 }
 
 function App() {
+  // Mungkin bisa playing areanya diset kayak width = max(900px, 100vw) gitu. settings page sama game pagenya widthnya beda terus lokasi button buat navigate linknya jadi geser berasa aneh gitu haha
   const [allowedWordLengths, setAllowedWordLengths] = useState([
     6, 7, 8, 9, 10,
   ]);
   const [currentTheme, setCurrentTheme] = useState('hangman')
+  
+  // Settings nya should be diluar App. komunikasi theme nya bisa pake either beda path atau sama path tapi beda query string
+  // querystringnya bisa dibaca pas pertama kali load di game page nya
   function Settings() {
     const handleOnChange = (number) => {
       allowedWordLengths.includes(number)

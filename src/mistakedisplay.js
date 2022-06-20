@@ -47,6 +47,7 @@ export function MistakeCountDisplay({
           </Mistakes>
         );
       } else if (numMistakes < 9) {
+        // too many ternary layer here, gimana kalo bikin helper function kayak getImageSrc(currentTheme, numMistakes) gitu
         return (
           <Mistakes>
             <Image
@@ -70,11 +71,16 @@ export function MistakeCountDisplay({
                   : hangman9
               }
             ></Image>
+            {/* instead bikin separate if karena beda teksnya, bisa di if disini. */}
+            {/* kek {numMistakes < 9 ? <h3>Mistakes left....</h3> : <h3>You lose......</h3>} */}
+            {/* References https://reactjs.org/docs/conditional-rendering.html#inline-if-with-logical--operator and https://reactjs.org/docs/conditional-rendering.html#inline-if-else-with-conditional-operator */}
+            {/* Atau bisa bikin helper function juga getMistakeDisplayText(currentTheme, numMistakes) gitu */}
             <h3>Mistakes left: {9 - numMistakes}</h3>
           </Mistakes>
         );
       } else if (numMistakes >= 9) {
         return (
+          // id nya buat apa ya
           <div id="mistakes">
             <Image src={hangman10}></Image>
             <h3>You lose! The word was {splitCurrentWord.join("")}.</h3>
