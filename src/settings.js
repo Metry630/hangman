@@ -11,7 +11,7 @@ const SettingsWrapper = styled.div`
   width: 700px;
   height: 450px;
   align-content: center;
-`
+`;
 export function Settings({
   allowedWordLengths,
   setAllowedWordLengths,

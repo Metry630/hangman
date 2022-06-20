@@ -33,103 +33,110 @@ export function MistakeCountDisplay({
   splitCurrentWord,
   numMistakes,
   currentTheme,
-  setGameFinished
+  setGameFinished,
 }) {
   if (
     splitCurrentWord.every((element) => {
       return revealedLetters.includes(element);
-    }) || numMistakes === 9
-  ){
-    setGameFinished(true)
+    }) ||
+    numMistakes === 9
+  ) {
+    setGameFinished(true);
   }
-  if(currentTheme === 'hangman' && splitCurrentWord.every((element) => {
-    return revealedLetters.includes(element);
-  })){
+  if (
+    currentTheme === "hangman" &&
+    splitCurrentWord.every((element) => {
+      return revealedLetters.includes(element);
+    })
+  ) {
     return (
       <Mistakes>
         <Image src={win}></Image>
         <h3>You Win!</h3>
       </Mistakes>
     );
-  }else if(currentTheme === 'pizza' && splitCurrentWord.every((element) => {
-    return revealedLetters.includes(element);
-  })){
+  } else if (
+    currentTheme === "pizza" &&
+    splitCurrentWord.every((element) => {
+      return revealedLetters.includes(element);
+    })
+  ) {
     return (
       <Mistakes>
         <Image src={pizzawin}></Image>
         <h3>You Win!</h3>
       </Mistakes>
     );
-  }else{
+  } else {
     return (
       <Mistakes>
-          <Image src={getImageSrc(currentTheme, numMistakes)}></Image>
-          <h3>{getCaption(currentTheme, numMistakes, splitCurrentWord)}</h3>
-        </Mistakes>
-    )
+        <Image src={getImageSrc(currentTheme, numMistakes)}></Image>
+        <h3>{getCaption(currentTheme, numMistakes, splitCurrentWord)}</h3>
+      </Mistakes>
+    );
   }
 }
 function getImageSrc(currentTheme, numMistakes) {
-    switch (currentTheme) {
-      case "hangman":
-        switch (numMistakes) {
-          case 0:
-            return hangman1;
-          case 1:
-            return hangman2;
-          case 2:
-            return hangman3;
-          case 3:
-            return hangman4;
-          case 4:
-            return hangman5;
-          case 5:
-            return hangman6;
-          case 6:
-            return hangman7;
-          case 7:
-            return hangman8;
-          case 8:
-            return hangman9;
-          default:
-            return hangman10;
-        }
-      case "pizza":
-        switch (numMistakes) {
-          case 0:
-            return pizza1;
-          case 1:
-            return pizza2;
-          case 2:
-            return pizza3;
-          case 3:
-            return pizza4;
-          case 4:
-            return pizza5;
-          case 5:
-            return pizza6;
-          default:
-            return pizza7;
-        }
-    }
-}
-function getCaption(currentTheme, numMistakes, splitCurrentWord){
-  let hangmanMistakesLeft = 9 - numMistakes
-  let pizzaMistakesLeft = 6 - numMistakes
-  switch(currentTheme){
-    case 'hangman':
-      switch(numMistakes){
-        case 9 :
-          return "You lose! The word was " + splitCurrentWord.join("")
-        default : 
-          return "Mistakes left: " + hangmanMistakesLeft
+  switch (currentTheme) {
+    case "hangman":
+      switch (numMistakes) {
+        case 0:
+          return hangman1;
+        case 1:
+          return hangman2;
+        case 2:
+          return hangman3;
+        case 3:
+          return hangman4;
+        case 4:
+          return hangman5;
+        case 5:
+          return hangman6;
+        case 6:
+          return hangman7;
+        case 7:
+          return hangman8;
+        case 8:
+          return hangman9;
+        default:
+          return hangman10;
       }
-    case 'pizza':
-      switch(numMistakes){
-        case 6 : 
-        return "You lose! The word was " + splitCurrentWord.join("")
-        default : 
-        return "Mistakes left: " + pizzaMistakesLeft
+    case "pizza":
+      switch (numMistakes) {
+        case 0:
+          return pizza1;
+        case 1:
+          return pizza2;
+        case 2:
+          return pizza3;
+        case 3:
+          return pizza4;
+        case 4:
+          return pizza5;
+        case 5:
+          return pizza6;
+        default:
+          return pizza7;
+      }
+  }
+}
+function getCaption(currentTheme, numMistakes, splitCurrentWord) {
+  let hangmanMistakesLeft = 9 - numMistakes;
+  let pizzaMistakesLeft = 6 - numMistakes;
+  switch (currentTheme) {
+    case "hangman":
+      switch (numMistakes) {
+        case 9:
+          return "You lose! The word was " + splitCurrentWord.join("");
+        default:
+          return "Mistakes left: " + hangmanMistakesLeft;
+      }
+    case "pizza":
+      switch (numMistakes) {
+        case 6:
+          return "You lose! The word was " + splitCurrentWord.join("");
+        default:
+          return "Mistakes left: " + pizzaMistakesLeft;
       }
   }
 }

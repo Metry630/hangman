@@ -92,7 +92,12 @@ const linkStyle = {
   color: "black",
   margin: "5px",
 };
-function Game({ allowedWordLengths, currentTheme, gameFinished, setGameFinished }) {
+function Game({
+  allowedWordLengths,
+  currentTheme,
+  gameFinished,
+  setGameFinished,
+}) {
   const [currentWord, setCurrentWord] = useState(
     getRandomWord(allowedWordLengths)
   );
@@ -111,7 +116,7 @@ function Game({ allowedWordLengths, currentTheme, gameFinished, setGameFinished 
     setNumMistakes(0);
     setRevealedLetters([]);
     setCurrentWord(getRandomWord(allowedWordLengths));
-    setGameFinished(false)
+    setGameFinished(false);
   }
   return (
     <Hangman>
@@ -172,7 +177,7 @@ function App() {
     6, 7, 8, 9, 10,
   ]);
   const [currentTheme, setCurrentTheme] = useState("hangman");
-  const [gameFinished, setGameFinished] = useState(false)
+  const [gameFinished, setGameFinished] = useState(false);
   return (
     <>
       <Router>
