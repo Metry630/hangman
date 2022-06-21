@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import "./App.css";
 import getRandomWord from "./words.js";
 import { Spaces } from "./wordSpaces.js";
@@ -185,7 +186,7 @@ function App() {
           <Link to="/settings" style={linkStyle}>
             Settings
           </Link>
-          <Link to="/game" style={linkStyle}>
+          <Link to="/" style={linkStyle}>
             Game
           </Link>
         </nav>
@@ -205,7 +206,7 @@ function App() {
           ></Route>
           <Route
             exact
-            path="/game"
+            path="/"
             element={
               <Game
                 allowedWordLengths={allowedWordLengths}
