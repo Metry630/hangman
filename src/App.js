@@ -148,7 +148,7 @@ function Game({
               revealedLetters={revealedLetters}
               splitCurrentWord={splitCurrentWord}
               letter={letter}
-              disabled={gameFinished}
+              disabled={gameFinished || revealedLetters.includes(letter)}
             >
               {letter}
             </LetterInput>
@@ -162,7 +162,7 @@ function Game({
               revealedLetters={revealedLetters}
               splitCurrentWord={splitCurrentWord}
               letter={letter}
-              disabled={gameFinished}
+              disabled={gameFinished || revealedLetters.includes(letter)}
             >
               {letter}
             </LetterInput>
